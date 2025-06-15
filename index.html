@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Peta Administrasi Provinsi Jambi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      text-align: center;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1em 0;
+    }
+
+    .map-container {
+      margin: 20px auto;
+      max-width: 90%;
+      overflow: hidden;
+    }
+
+    .map-container img {
+      width: 100%;
+      max-width: 800px;
+      transition: transform 0.3s ease;
+      transform-origin: center center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .caption {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    button {
+      margin: 10px 5px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004d99;
+    }
+
+    footer {
+      margin-top: 40px;
+      background-color: #eee;
+      padding: 15px 0;
+      color: #333;
+    }
+
+    @media screen and (max-width: 600px) {
+      button {
+        width: 80%;
+        font-size: 16px;
+      }
+
+      .caption {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Peta Administrasi Provinsi Jambi</h1>
+  </header>
+
+  <main>
+    <div class="map-container">
+      <img src="Screenshot 2025-06-13 235236.png" alt="Peta Provinsi Jambi" id="mapImage"/>
+    </div>
+    <p class="caption">Sumber: Kelompok - Pramudya Azis, Heru Wijaya, Aditya Shaputra</p>
+    <button onclick="zoomIn()">Zoom In</button>
+    <button onclick="zoomOut()">Zoom Out</button>
+    <button onclick="resetZoom()">Reset</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Sistem Informasi Geografis</p>
+  </footer>
+
+  <script>
+    let scale = 1;
+    const mapImage = document.getElementById('mapImage');
+
+    function zoomIn() {
+      scale = Math.min(scale + 0.1, 3);
+      updateScale();
+    }
+
+    function zoomOut() {
+      scale = Math.max(scale - 0.1, 0.2);
+      updateScale();
+    }
+
+    function resetZoom() {
+      scale = 1;
+      updateScale();
+    }
+
+    function updateScale() {
+      mapImage.style.transform = `scale(${scale})`;
+    }
+  </script>
+</body>
+</html>
